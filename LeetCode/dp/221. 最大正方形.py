@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/4/2 17:15
 # @Author : zdqzyx
-# @File : 221. Maximal Square.py
+# @File : 221. 最大正方形.py
 # @Software: PyCharm
 
 '''
@@ -21,6 +21,10 @@
 
 from typing import List
 class Solution:
+    '''
+    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])+1
+    return max(dp[i][j])
+    '''
     def maximalSquare(self, matrix: List[List[str]]) -> int:
         m = len(matrix)
         if m==0:

@@ -2,7 +2,7 @@
 # @Time : 2020/4/1 10:30
 # @Author : zdqzyx
 # @Site : 
-# @File : 70. Climbing Stairs.py
+# @File : 70. 爬楼梯.py
 # @Software: PyCharm
 
 class Solution:

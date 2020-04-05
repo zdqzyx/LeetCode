@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/4/1 11:40
 # @Author : zdqzyx
-# @File : 120. Triangle.py
+# @File : 120. 三角形最小路径和.py
 # @Software: PyCharm
 
 '''
@@ -23,6 +23,10 @@ class Solution:
     '''
     ref:https://leetcode-cn.com/problems/triangle/solution/san-jiao-xing-zui-xiao-lu-jing-he-de-jie-jue-ban-f/
     求三角形最短路径和
+    # 从下到上求 优化空间复杂度O(n)
+    dp[j] = min(dp[j], dp[j+1])+triangle[i][j]
+    return dp[0]
+
     # 从下到上求
     dp[i][j] = min(dp[i+1][j], dp[i+1][j+1])+dp[i][j]
     return dp[0][0]

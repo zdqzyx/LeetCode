@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/4/2 16:44
 # @Author : zdqzyx
-# @File : 64. Minimum Path Sum.py
+# @File : 64. 最小路径和.py
 # @Software: PyCharm
 '''
 给定一个包含非负整数的 m x n 网格，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。

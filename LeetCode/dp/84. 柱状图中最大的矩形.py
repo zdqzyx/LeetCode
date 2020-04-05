@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/4/2 23:30
 # @Author : zdqzyx
-# @File : 84. Largest Rectangle in Histogram.py
+# @File : 84. 柱状图中最大的矩形.py
 # @Software: PyCharm
 
 '''

@@ -15,6 +15,8 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 '''
 
+import functools
+
 from typing import List
 class Solution:
     '''
@@ -28,6 +30,18 @@ class Solution:
 
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         wordDict = dict(zip(wordDict, range(len(wordDict))))
+
+        # 等价于递归+回溯
+        import functools
+        @functools.lru_cache(None)
+        def helper(start):
+            if start == len(s):
+                return True
+            for i in range(start + 1, len(s) + 1):
+                if s[start:i] in wordDict and helper(i):
+                    return True
+            return False
+        return helper(0)
 
         # 递归+回溯
         memo = [None for _ in range(len(s))]
@@ -71,12 +85,14 @@ class Solution:
         return False
 
 
+
+
 if __name__ == '__main__':
     sol = Solution()
     s = "leetcode"
     wordDict = ["leet", "code"]
 
-    s = "catsandog"
-    wordDict = ["cats", "dog", "sand", "and", "cat"]
+    # s = "catsandog"
+    # wordDict = ["cats", "dog", "sand", "and", "cat"]
     print(sol.wordBreak(s, wordDict))
 

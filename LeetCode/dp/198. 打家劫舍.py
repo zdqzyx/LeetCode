@@ -27,17 +27,21 @@ class Solution:
     '''
     def rob(self, nums: List[int]) -> int:
         # 优化空间复杂度为O（1），时间复杂度O（n）
-        pre, cur = 0, 0
-        for num in nums:
-            pre, cur = cur, max(pre+num, cur)
-        return cur
+        # pre, cur = 0, 0
+        # for num in nums:
+        #     pre, cur = cur, max(pre+num, cur)
+        # return cur
 
         # 容易理解的状态转移方程: dp[i] = max(dp[i-1],dp[i-2]+nums[i]) , num[i]为当前房屋的金额
         n = len(nums)
         dp = [0]*(n+2)
-        for i in range(2,n+2):
+        # dp[0] = nums[0]
+        # dp[1] = max(nums[0], nums[1])
+        for i in range(2, n+2):
             dp[i] = max(dp[i-1],dp[i-2]+nums[i-2])
         return dp[-1]
 
 if __name__ == '__main__':
-    print(Solution().rob([2,7,9,3,1]))
+    mat = [2,7,9,3,1]
+    mat = [2, 7]
+    print(Solution().rob(mat))

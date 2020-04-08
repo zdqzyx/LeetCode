@@ -79,6 +79,15 @@
     # update i2,i3,i5
     return dp[-1]
     ```
+- [279.完全平方数](LeetCode/dp/279.完全平方数.py) | [leetcode](https://leetcode-cn.com/problems/perfect-squares) | 给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
+    ```python
+    # numSquares(n)=min(numSquares(n-k) + 1)∀k∈square numbers
+    # dp[i]表示第i个数需要的最少平方数个数，则对于当前的第i个数来说，dp[i-k]为减去平方数k后的数字需要的最少平方数个数，在+1得到dp[i]，取所有平方数情况的最小值得到最终的dp[i]
+    if i-k>=0:
+        dp[i] = min(dp[i], dp[i-k]+1)
+    return dp[-1]
+    ```
+  
 - [300.最长上升子序列](LeetCode/dp/300.最长上升子序列.py) | [leetcode](https://leetcode-cn.com/problems/longest-increasing-subsequence) | 编写一个程序，找出第 n 个丑数。丑数就是只包含质因数 2, 3, 5 的正整数。
     ```python
     # dp[i]表示以i位置结尾的最长上升子序列的长度
@@ -91,6 +100,12 @@
     #最后有效设置位 dp[i] = dp[i&(i-1)]+1
     # 最低设置位， dp[i] = dp[i//2]+int(i%2==1)
     return dp
+    ```
+
+- [740.删除与获得点数](LeetCode/dp/740.删除与获得点数.py) | [leetcode](https://leetcode-cn.com/problems/counting-bits) | 给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素,开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。
+    ```python
+    dp[i] = max(dp[i-1], dp[i-2]+d.get(i, 0))
+    return dp[-1]
     ```
 
 ## 困难
@@ -109,4 +124,12 @@
         dp[i][j] = 0
     return dp[-1][-1]
    ```
+
+- [174.地下城游戏](LeetCode/dp/174.地下城游戏.py) | [leetcode](https://leetcode-cn.com/problems/dungeon-game) | 编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。
+   ```python
+    #自底向上, 倒叙逆向类型
+    dp[i][j] = max(1, min(dp[i+1][j], dp[i][j+1])-dungeon[i][j])
+    return dp[0][0]
+   ```
+
 

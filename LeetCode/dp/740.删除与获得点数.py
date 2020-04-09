@@ -33,7 +33,8 @@
 from typing import List
 class Solution:
     '''
-
+    dp[i] = max(dp[i-1], dp[i-2]+d.get(i, 0))
+    return dp[-1]
     '''
     def deleteAndEarn(self, nums: List[int]) -> int:
         # 优化不必要的循环， 当前位置与上一个位置间隔超过1时，后面pre和cur都是cur，需要先更新下，在按照打家劫舍的解法做

@@ -14,6 +14,26 @@
 
 
 ## 中等
+
+- [3.无重复字符的最长子串](LeetCode/dp/3.无重复字符的最长子串.py) | [leetcode](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters) | 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+    ```python
+    # dp[i]表示以i位置结尾的字符最长无重复字串长度
+    if i - dp[i - 1] > d.get(s[i], -1):
+        dp[i] = dp[i - 1] + 1
+    else:
+        dp[i] = i - d.get(s[i], -1)
+    d[s[i]] = i
+    return max(dp)
+    ```
+  
+- [5.最长回文子串](LeetCode/dp/5.最长回文子串.py) | [leetcode](https://leetcode-cn.com/problems/longest-palindromic-substring) | 给定一个字符串 s，找到 s 中最长的回文子串。
+    ```python
+    # dp[i][j]表示i开始j结尾得字符串是否为回文串
+    if s[i]==s[j] and (j-i<=1 or dp[i+1][j-1]==1):
+        dp[i][j] = 1
+    return s[start:start+max_len]
+    ```
+
 - [63.不同路径II](LeetCode/dp/63.%20不同路径II.py) | [leetcode](https://leetcode-cn.com/problems/unique-paths-ii/) | 二维数组坐上到右下，求不同路径个数  
     ```python
     if obstacleGrid[i-1][j-1] == 0:

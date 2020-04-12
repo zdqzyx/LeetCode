@@ -127,6 +127,13 @@
     dp[i] = max(dp[i-1], dp[i-2]+d.get(i, 0))
     return dp[-1]
     ```
+  
+- [1143.最长公共子序列](LeetCode/dp/1143.最长公共子序列.py) | [leetcode](https://leetcode-cn.com/problems/longest-common-subsequence) | 给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素,开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。
+    ```python
+    # 初始化 dp[n+1][m+1]
+    dp[i][j] = dp[i-1][j-1]+1 if text1[i-1]==text2[j-1] else max(dp[i][j-1], dp[i-1][j])
+    return dp[-1][-1]
+    ```
 
 ## 困难
 

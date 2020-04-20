@@ -2,6 +2,7 @@
 
 ## 简单
 - [53.最大连续子序列和](LeetCode/dp/53.%20最大子序和.py) | [leetcode](https://leetcode-cn.com/problems/maximum-subarray/)  
+    
     ```python
     dp[i] = max(dp[i-1]+nums[i], nums[i])  
     return max(dp)
@@ -153,10 +154,20 @@
    ```
 
 - [174.地下城游戏](LeetCode/dp/174.地下城游戏.py) | [leetcode](https://leetcode-cn.com/problems/dungeon-game) | 编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。
-   ```python
+    ```python
     #自底向上, 倒叙逆向类型
     dp[i][j] = max(1, min(dp[i+1][j], dp[i][j+1])-dungeon[i][j])
     return dp[0][0]
-   ```
+    ```
 
+- [887.鸡蛋掉落](LeetCode/dp/887.鸡蛋掉落.py) | [leetcode](https://leetcode-cn.com/problems/super-egg-drop) | N层楼，K个鸡蛋，找到最小移动次数来确定F楼层，使得鸡蛋在<=F楼层时掉下不会碎，>F楼层时掉下会碎  
+    $$
+    dp(N, K) = 1 + \min \limits_{1<=X<=N} \{ max(dp(X-1, K-1), dp(N-X, k)) \}
+    $$
+    其中, dp(X-1, K-1)表示在第X层扔鸡蛋碎了，表示要到(1, X-1)层之间去找，同时K个鸡蛋减一。dp(N-X, k)表示在第X层仍鸡蛋没有碎，表示要到(N-X, N)层之间去找，同时K个鸡蛋没有消耗，不做处理
+    ```python
+    #自底向上
+    dp[i][j] = min(dp[i][j], max(dp[x-1][j-1], dp[i-x][j]))
+    return dp[-1][-1]
+    ```
 
